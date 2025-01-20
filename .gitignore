@@ -6,4 +6,4 @@ tests/src
 tmp/
 *.swp
 .ipynb_checkpoints
-*.ipynb
+src/

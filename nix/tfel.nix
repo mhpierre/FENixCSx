@@ -9,13 +9,13 @@
 
 stdenv.mkDerivation rec {
     pname = "tfel";
-    version = "4.2.0";
+    version = "5.0.0-dev";
 
     src = fetchFromGitHub {
         owner = "thelfer";
         repo = "tfel";
-        rev = "TFEL-${version}";
-        sha256 = "sha256-VfAck+D1zPpt45i1VdAn0ITulhzVY4kUFAoCW0LtjuE=";
+        rev = "3bde236d1fbf0bbef561b2aedb95e69e350a5154";
+        sha256 = "sha256-BTX6dldANIyc1f/fcDYWF1v0DKyq/J0wzP/h3luHfRU=";
     };
 
     nativeBuildInputs = [
@@ -32,5 +32,6 @@ stdenv.mkDerivation rec {
 
     cmakeFlags = [
         "-Denable-python-bindings=ON"
+        "-Dlocal-castem-header=ON"
     ];
 }

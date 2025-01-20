@@ -1,16 +1,17 @@
 { buildPythonPackage
-, fetchgit
+, fetchFromGitHub
 , setuptools
 }:
 
 buildPythonPackage rec {
-    pname = "dolfinx-materials";
-    version = "0.2.1";
+    pname = "dolfinx_materials";
+    version = "0.3.0";
 
-    src = fetchgit {
-        url = "https://gitlab.enpc.fr/navier-fenics/dolfinx_materials.git";
-        rev = "v${version}";
-        sha256 = "sha256-txWGfYDsuErFUY/g2jk2xcRJtSgHeiE6B99Cl9YKcuo=";
+    src = fetchFromGitHub {
+        owner = "bleyerj";
+        repo = "dolfinx_materials";
+        rev = "v0.3.0";
+        sha256 = "sha256-xsXOICOxHrKdhqBpXsD1J3QVv8QzfzqhITy5m1cak+U=";
     };
 
     pyproject = true;

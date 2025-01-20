@@ -11,16 +11,12 @@
             venvShellHook
             pip
             numpy
-            # jupyterlab
-            # ipywidgets
-            # notebook
-            # pyvista
-            # trame
-            # trame-vtk
-            # trame-vuetify
+            ninja
+            mpi4py
         ];
         local-packages = with self.packages.${system}; [
             # slepc
+            nanobind
             petsc4py
             scotch
             tfel
@@ -53,11 +49,14 @@
             slepc = self.packages.${system}.slepc;
             petsc4py = self.packages.${system}.petsc4py;
         };
+        packages.nanobind = pkgs.python311Packages.callPackage ./nix/nanobind.nix { };
+        packages.adios2 = pkgs.python311Packages.callPackage ./nix/adios2.nix {};
 
         # FEniCSx components
         packages.ufl = pkgs.python311Packages.callPackage ./nix/ufl.nix { };
         packages.basix = pkgs.python311Packages.callPackage ./nix/basix.nix {
             ufl = self.packages.${system}.ufl;
+            nanobind = self.packages.${system}.nanobind;
         };
         packages.ffcx = pkgs.python311Packages.callPackage ./nix/ffcx.nix {
             ufl = self.packages.${system}.ufl;
@@ -68,6 +67,7 @@
             ufl = self.packages.${system}.ufl;
             basix = self.packages.${system}.basix;
             ffcx = self.packages.${system}.ffcx;
+            adios2 = self.packages.${system}.adios2;
         };
         packages.dolfinx-python = pkgs.python311Packages.callPackage ./nix/dolfinx-python.nix {
             ufl = self.packages.${system}.ufl;
@@ -76,15 +76,13 @@
             dolfinx-cpp = self.packages.${system}.dolfinx-cpp;
             petsc4py = self.packages.${system}.petsc4py;
             slepc4py = self.packages.${system}.slepc4py;
+            nanobind = self.packages.${system}.nanobind;
+            adios2 = self.packages.${system}.adios2;
         };
 
         devShell = pkgs.mkShell {
           venvDir = "./.venv";
           buildInputs = core-python-packages ++ local-packages ++ [pkgs.openmpi];
-          # I tried ...
-          # shellHook = ''
-          #   pip install pyvista notebook jupyterlab ipywidgets trame trame-vtk trame-vuetify
-          # '';
         };
       }
     );
