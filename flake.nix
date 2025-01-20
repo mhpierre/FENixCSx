@@ -26,7 +26,7 @@
             ffcx
             dolfinx-cpp
             dolfinx-python
-            #dolfinx-materials
+            dolfinx-materials
         ];
       in
       {
