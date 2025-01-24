@@ -3,6 +3,8 @@
 , clang
 , cmake
 , pip
+, stdenv
+, pkgs
 }:
 
 buildPythonPackage rec {
@@ -22,4 +24,11 @@ buildPythonPackage rec {
   propagatedBuildInputs = [
     clang
   ];
+
+  nativeBuildInputs = [ pkgs.stdenv ];
+
+  stdenv = pkgs.stdenv // {
+      inherit (pkgs.darwin.apple_sdk_12_3) frameworks;
+      inherit (pkgs.darwin.apple_sdk.frameworks_12_3) SDKROOT;
+    };
 }
