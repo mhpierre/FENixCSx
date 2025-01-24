@@ -6,6 +6,13 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        system = "x86_64-darwin"; # Or "aarch64-darwin" for Apple Silicon
+              overlays = [ (self: super: {
+                inherit (super.darwin.apple_sdk) frameworks;
+                apple_sdk = super.darwin.apple_sdk // {
+                  version = "12.3"; # Specify the SDK version here
+                };
+              }) ];
         core-python-packages = with pkgs.python311Packages; [
             python
             venvShellHook
