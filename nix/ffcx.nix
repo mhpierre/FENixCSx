@@ -1,19 +1,21 @@
-{ buildPythonPackage
-, fetchFromGitHub
-, ps
-, blas
-, setuptools
-, numpy
-, pybind11
-, scikit-build-core
-, cmake
-, pathspec
-, pyproject-metadata
-, ufl
-, basix
+{
+  buildPythonPackage,
+  fetchFromGitHub,
+  ps,
+  blas,
+  setuptools,
+  numpy,
+  pybind11,
+  scikit-build-core,
+  cmake,
+  pathspec,
+  pyproject-metadata,
+  ufl,
+  basix,
+  cffi,
 }:
 
-buildPythonPackage rec {
+buildPythonPackage {
 
   pname = "ffcx";
   version = "0.8.0";
@@ -45,6 +47,7 @@ buildPythonPackage rec {
     pyproject-metadata
     ufl
     basix
+    cffi
   ];
 
   dontUseCmakeConfigure = true;

@@ -1,28 +1,31 @@
-{ buildPythonPackage
-, fetchFromGitHub
-, setuptools
-, numpy
-, ufl
-, basix
-, ffcx
-, dolfinx-cpp
-, pybind11
-, cmake
-, ps
-, mpi
-, pugixml
-, boost
-, hdf5-mpi
-, pkg-config
-, petsc4py
-, slepc4py
-, petsc
-, cffi
-, certifi
-, zlib
-, nanobind
-, ninja
-, adios2
+{
+  buildPythonPackage,
+  fetchFromGitHub,
+  setuptools,
+  numpy,
+  ufl,
+  basix,
+  ffcx,
+  dolfinx-cpp,
+  pybind11,
+  cmake,
+  ps,
+  mpi,
+  pugixml,
+  boost,
+  hdf5-mpi,
+  pkg-config,
+  petsc4py,
+  slepc4py,
+  petsc,
+  cffi,
+  certifi,
+  zlib,
+  nanobind,
+  ninja,
+  adios2,
+  apple-sdk_12,
+  darwinMinVersionHook,
 }:
 
 buildPythonPackage rec {
@@ -55,6 +58,8 @@ buildPythonPackage rec {
     pkg-config
     nanobind
     ninja
+    apple-sdk_12
+    (darwinMinVersionHook "12.3")
   ];
 
   propagatedBuildInputs = [

@@ -1,11 +1,10 @@
 { buildPythonPackage
 , fetchurl
 , clang
-, cmake
 , pip
 }:
 
-buildPythonPackage rec {
+buildPythonPackage {
   pname = "nanobind";
   version = "1.9.2";
   format = "wheel";
