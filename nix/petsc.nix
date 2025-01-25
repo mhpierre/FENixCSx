@@ -66,7 +66,6 @@ stdenv.mkDerivation rec {
       "--with-scalar-type=${petsc-scalar-type}"
       "--with-precision=${petsc-precision}"
       "--with-mpi=${if mpiSupport then "1" else "0"}"
-      # "--with-mpiexec=${mpi}/bin/mpiexec"
     ]
     ++ lib.optionals mpiSupport [
       "--CC=mpicc"

@@ -6,6 +6,7 @@
   mpi4py,
   dolfinx-python,
   jax,
+  cmake,
 }:
 
 buildPythonPackage {
@@ -21,6 +22,10 @@ buildPythonPackage {
 
   pyproject = true;
 
+  nativeBuildInputs = [
+    cmake
+  ];
+
   propagatedBuildInputs = [
     setuptools
     petsc4py
@@ -28,4 +33,6 @@ buildPythonPackage {
     dolfinx-python
     jax
   ];
+
+  dontUseCmakeConfigure = true;
 }

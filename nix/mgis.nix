@@ -6,6 +6,7 @@
   cmake,
   python3,
   tfel,
+  clang_17,
 }:
 
 stdenv.mkDerivation {
@@ -22,6 +23,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     ps
+    clang_17
   ];
 
   propagatedBuildInputs = [

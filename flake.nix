@@ -1,5 +1,5 @@
 {
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
   outputs =
@@ -20,8 +20,8 @@
           pip
           numpy
           ninja
-          mpi4py
-          jax
+          # mpi4py
+          # jax
           nanobind
         ];
         local-packages = with pkgs; [
@@ -31,6 +31,8 @@
           tfel
           mgis
           dolfinx-cpp
+          python312Packages.jax
+          python312Packages.mpi4py
           python312Packages.petsc4py
           python312Packages.ufl
           python312Packages.basix

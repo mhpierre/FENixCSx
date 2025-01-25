@@ -24,8 +24,8 @@
   nanobind,
   ninja,
   adios2,
-  apple-sdk_12,
-  darwinMinVersionHook,
+# apple-sdk_12,
+# darwinMinVersionHook,
 }:
 
 buildPythonPackage rec {
@@ -46,20 +46,20 @@ buildPythonPackage rec {
   nativeBuildInputs = [
     cmake
     ps
+    mpi
+    pkg-config
   ];
 
   buildInputs = [
     basix
     dolfinx-cpp
-    mpi
     pugixml
     boost
     hdf5-mpi
-    pkg-config
     nanobind
     ninja
-    apple-sdk_12
-    (darwinMinVersionHook "12.3")
+    # apple-sdk_12
+    # (darwinMinVersionHook "12.3")
   ];
 
   propagatedBuildInputs = [

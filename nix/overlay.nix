@@ -24,9 +24,11 @@ final: prev: {
         dolfinx-materials = python-final.callPackage ./dolfinx-materials.nix { };
 
         # accessories for FEniCSx
+        jax = python-final.callPackage ./jax.nix { };
+        mpi4py = python-final.callPackage ./mpi4py.nix { };
         petsc4py = python-final.callPackage ./petsc4py.nix { };
         slepc4py = python-final.callPackage ./slepc4py.nix { };
-        # packages.nanobind = python-final.callPackage ./nanobind.nix { };
+        nanobind = python-final.callPackage ./nanobind.nix { };
 
         # FEniCSx components
         ufl = python-final.callPackage ./ufl.nix { };

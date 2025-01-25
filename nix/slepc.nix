@@ -22,11 +22,11 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "slepc";
-  version = "3.19.2";
+  version = "3.21.2";
 
   src = fetchurl {
     url = "https://slepc.upv.es/download/distrib/slepc-${version}.tar.gz";
-    sha256 = "sha256-yn7ZBnlZcfvjXwjuJRomuGpEQqGGCbh4y6AINcnWIDQ=";
+    sha256 = "sha256-MG+mSXUFCbOVe5+TEb/13B0gvlxdSU3WRyWExDm5MfY=";
   };
 
   nativeBuildInputs = [
