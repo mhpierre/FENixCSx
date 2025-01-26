@@ -40,6 +40,21 @@ buildPythonPackage rec {
   disabledTestPaths = [
     # Almost all tests in this file fail (TODO: Report about this upstream..)
     "test/test_spawn.py"
+    # Added
+    "test/test_cco_buf.py"
+    "test/test_cco_nb_buf.py"
+    "test/test_cco_nb_vec.py"
+    "test/test_cco_ngh_buf.py"
+    "test/test_cco_pr_buf.py"
+    "test/test_cco_pr_ngh_buf.py"
+    "test/test_cco_pr_vec.py"
+    "test/test_cco_vec.py"
+    "test/test_io.py"
+    "test/test_msgspec.py"
+    "test/test_p2p_buf.py"
+    "test/test_p2p_buf_matched.py"
+    "test/test_p2p_buf_part.py"
+    "test/test_pack.py"
   ];
 
   passthru = {

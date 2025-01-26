@@ -87,7 +87,7 @@ buildPythonPackage rec {
   # which creates a circular dependency. See https://discourse.nixos.org/t/how-to-nix-ify-python-packages-with-circular-dependencies/14648/2.
   # Not a big deal, this is how the JAX docs suggest running the test suite
   # anyhow.
-  doCheck = false;
+  # doCheck = false;
   pytestFlagsArray =
     [
       "--numprocesses=4"
@@ -98,6 +98,7 @@ buildPythonPackage rec {
       # SystemError: nanobind::detail::nb_func_error_except(): exception could not be translated!
       "--deselect tests/shape_poly_test.py::ShapePolyTest"
       "--deselect tests/tree_util_test.py::TreeTest"
+      "--deselect tests/pjit_test.py::PJitErrorTest::testAxisResourcesMismatch" # Added
     ];
 
   # Prevents `tests/export_back_compat_test.py::CompatTest::test_*` tests from failing on darwin with

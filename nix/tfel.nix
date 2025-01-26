@@ -6,6 +6,7 @@
   cmake,
   python312,
   gnuplot,
+  lib,
   clang_17, # Cryptic CMAKE error 2 with clang 19
 }:
 
@@ -23,8 +24,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     ps
-    clang_17 # Cryptic CMAKE error 2 with clang 19
-  ];
+  ] ++ lib.optional stdenv.isDarwin clang_17;
 
   propagatedBuildInputs = [
     python312

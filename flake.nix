@@ -14,6 +14,10 @@
       let
         overlay = import ./nix/overlay.nix;
         pkgs = nixpkgs.legacyPackages.${system}.extend overlay;
+        core-packages = with pkgs; [
+          petsc
+          openmpi
+        ];
         core-python-packages = with pkgs.python312Packages; [
           python
           venvShellHook
@@ -44,7 +48,7 @@
       {
         devShell = pkgs.mkShell {
           venvDir = "./.venv";
-          buildInputs = core-python-packages ++ local-packages ++ [ pkgs.openmpi ];
+          buildInputs = core-packages ++ core-python-packages ++ local-packages;
         };
 
         legacyPackages = pkgs;

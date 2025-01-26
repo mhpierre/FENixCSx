@@ -4,9 +4,10 @@
   fetchFromGitHub,
   ps,
   cmake,
-  python3,
+  python312,
   tfel,
-  clang_17,
+  lib,
+  clang_17, # Cryptic CMAKE error 2 with clang 19
 }:
 
 stdenv.mkDerivation {
@@ -23,11 +24,10 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     ps
-    clang_17
-  ];
+  ] ++ lib.optional stdenv.isDarwin clang_17;
 
   propagatedBuildInputs = [
-    python3
+    python312
     pkgs.python312Packages.numpy
     pkgs.python312Packages.boost
     tfel
