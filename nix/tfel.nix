@@ -24,7 +24,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     ps
-  ] ++ lib.optional stdenv.isDarwin clang_17;
+  ] ++ lib.optional stdenv.hostPlatform.isDarwin clang_17;
 
   propagatedBuildInputs = [
     python312
