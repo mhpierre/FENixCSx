@@ -7,7 +7,6 @@
   mpi,
   pytestCheckHook,
   mpiCheckPhaseHook,
-  stdenv,
 }:
 
 buildPythonPackage rec {
@@ -37,11 +36,14 @@ buildPythonPackage rec {
     pytestCheckHook
     mpiCheckPhaseHook
   ];
-  # TODO: link to upstream issue
-  doCheck = !(stdenv.hostPlatform.isAarch64 && stdenv.hostPlatform.isDarwin);
-  disabledTestPaths = [
-    # Almost all tests in this file fail (TODO: Report about this upstream..)
-    "test/test_spawn.py"
+
+  # disabledTestPaths = [
+  #   # Almost all tests in this file fail (TODO: Report about this upstream..)
+  #   "test/test_spawn.py"
+  # ];
+
+  patches = [
+    ./mpi4py.test.dlpackimpl.py.patch
   ];
 
   passthru = {

@@ -15,7 +15,11 @@
   hdf5,
   metis,
   parmetis,
-  withParmetis ? false,
+  withParmetis ? true,
+  scalapack,
+  withScalapack ? false,
+  mumps,
+  withMumps ? false,
   pkg-config,
   p4est,
   zlib, # propagated by p4est but required by petsc
@@ -52,7 +56,9 @@ stdenv.mkDerivation rec {
     ++ lib.optionals withParmetis [
       metis
       parmetis
-    ];
+    ]
+    ++ lib.optional withScalapack scalapack
+    ++ lib.optional withMumps mumps;
 
   prePatch = lib.optionalString stdenv.hostPlatform.isDarwin ''
     substituteInPlace config/install.py \
@@ -84,6 +90,14 @@ stdenv.mkDerivation rec {
       "FOPTFLAGS=-O3"
       "CXXOPTFLAGS=-O3"
       "CXXFLAGS=-O3"
+    ]
+    ++ lib.optionals (mpiSupport && withScalapack) [
+      "--with-scalapack=1"
+      "--with-scalapack-dir=${scalapack}"
+    ]
+    ++ lib.optionals (mpiSupport && withMumps) [
+      "--with-mumps=1"
+      "--with-mumps-dir=${mumps}"
     ];
   preConfigure =
     ''

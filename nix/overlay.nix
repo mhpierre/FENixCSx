@@ -1,5 +1,5 @@
 final: prev: {
-  # petsc = final.callPackage ./petsc.nix { };
+  petsc = final.callPackage ./petsc.nix { };
   # TFEL/MFront
   tfel = final.callPackage ./tfel.nix { };
   adios2 = final.callPackage ./adios2.nix {
@@ -15,7 +15,7 @@ final: prev: {
   # MFrontGenericInterfaceSupport (MGIS)
   mgis = final.callPackage ./mgis.nix { };
   slepc = final.callPackage ./slepc.nix { };
-  scotch = final.callPackage ./scotch.nix { };
+  # scotch = final.callPackage ./scotch.nix { };
 
   python312 =
     let

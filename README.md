@@ -2,14 +2,14 @@
 
 Everything seems to install properly with:
 
-```
+```sh
 nix develop
 ```
 
 (Experimental features nix-command and flakes must be allowed in Nix)
 Some python packages still need to be installed through pip:
 
-```
+```sh
 pip install pyvista notebook jupyterlab ipywidgets trame trame-vtk trame-vuetify
 ```
 

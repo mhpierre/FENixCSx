@@ -13,10 +13,17 @@
       system:
       let
         overlay = import ./nix/overlay.nix;
-        pkgs = nixpkgs.legacyPackages.${system}.extend overlay;
+        pkgsWithoutOverlay = import nixpkgs {
+          system = system;
+          config = {
+            allowUnfree = true;
+          };
+        };
+        pkgs = pkgsWithoutOverlay.extend overlay;
         core-packages = with pkgs; [
-          petsc
           openmpi
+          scotch
+          # mumps
         ];
         core-python-packages = with pkgs.python312Packages; [
           python
@@ -29,9 +36,8 @@
           nanobind
         ];
         local-packages = with pkgs; [
-          # slepc
-          # nanobind
-          scotch
+          petsc
+          slepc
           tfel
           mgis
           dolfinx-cpp
