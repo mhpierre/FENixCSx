@@ -23,32 +23,34 @@
         core-packages = with pkgs; [
           openmpi
           scotch
+          petsc
           # mumps
         ];
-        core-python-packages = with pkgs.python312Packages; [
+        core-python-packages = with pkgs.python313Packages; [
           python
           venvShellHook
           pip
           numpy
           ninja
-          # mpi4py
+          mpi4py
           # jax
-          nanobind
+          # nanobind
         ];
         local-packages = with pkgs; [
-          petsc
+          # petsc
           slepc
-          tfel
-          mgis
+          # tfel
+          # mgis
           dolfinx-cpp
-          python312Packages.jax
-          python312Packages.mpi4py
-          python312Packages.petsc4py
-          python312Packages.ufl
-          python312Packages.basix
-          python312Packages.ffcx
-          python312Packages.dolfinx-python
-          python312Packages.dolfinx-materials
+          # python313Packages.jax
+          python313Packages.mpi4py
+          python313Packages.petsc4py
+          python313Packages.slepc4py
+          python313Packages.ufl
+          python313Packages.basix
+          python313Packages.ffcx
+          python313Packages.dolfinx-python
+          # python313Packages.dolfinx-materials
         ];
       in
       {

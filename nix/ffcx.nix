@@ -18,13 +18,13 @@
 buildPythonPackage {
 
   pname = "ffcx";
-  version = "0.8.0";
+  version = "0.9.0";
 
   src = fetchFromGitHub {
     owner = "FEniCS";
     repo = "ffcx";
-    rev = "v0.8.0";
-    hash = "sha256-zo+mGXUvxvqW76f2z8p24GV3Ln3jegB0WAplgqNPSqk=";
+    rev = "v0.9.0";
+    hash = "sha256-eAV//RLbrxyhqgbZ2DiR7qML7xfgPn0/Seh+2no0x8w=";
   };
 
   format = "pyproject";

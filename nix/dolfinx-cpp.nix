@@ -13,18 +13,19 @@
 , scotch
 , petsc
 , adios2
+, spdlog
 }:
 
 stdenv.mkDerivation rec {
 
     pname = "dolfinx";
-    version = "0.8.0";
+    version = "0.9.0";
 
     src = fetchFromGitHub {
         owner = "FEniCS";
         repo = "dolfinx";
-        rev = "v0.8.0";
-        hash = "sha256-DYnzl7WI600KuC79ponzuJzr13BucDuRoIdm+U1nxX0=";
+        rev = "v0.9.0";
+        hash = "sha256-1MM04Z3C3gD2Bb+Emg8PoHmgsXq0n6RkhFdwNlCJSh4=";
     };
 
     sourceRoot = "${src.name}/cpp";
@@ -41,6 +42,7 @@ stdenv.mkDerivation rec {
         pkg-config
         hdf5-mpi
         scotch
+        spdlog
     ];
 
     propagatedBuildInputs = [
@@ -51,9 +53,9 @@ stdenv.mkDerivation rec {
         adios2
     ];
 
-    cmakeFlags = [
-        "-DDOLFINX_SKIP_BUILD_TESTS=TRUE"
-    ];
+    # cmakeFlags = [
+    #     "-DDOLFINX_SKIP_BUILD_TESTS=TRUE"
+    # ];
 
     patches = [
         ./dolfinx.pc.in.patch

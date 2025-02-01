@@ -4,7 +4,7 @@
   fetchFromGitHub,
   ps,
   cmake,
-  python312,
+  python313,
   gnuplot,
   lib,
   clang_17, # Cryptic CMAKE error 2 with clang 19
@@ -27,9 +27,9 @@ stdenv.mkDerivation {
   ] ++ lib.optional stdenv.hostPlatform.isDarwin clang_17;
 
   propagatedBuildInputs = [
-    python312
-    pkgs.python312Packages.numpy
-    pkgs.python312Packages.boost
+    python313
+    pkgs.python313Packages.numpy
+    pkgs.python313Packages.boost
     gnuplot
   ];
 

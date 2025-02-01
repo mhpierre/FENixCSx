@@ -24,19 +24,18 @@
   nanobind,
   ninja,
   adios2,
-# apple-sdk_12,
-# darwinMinVersionHook,
+  spdlog,
 }:
 
 buildPythonPackage rec {
   pname = "dolfinx";
-  version = "0.8.0";
+  version = "0.9.0";
 
   src = fetchFromGitHub {
     owner = "FEniCS";
     repo = "dolfinx";
     rev = "v${version}";
-    hash = "sha256-DYnzl7WI600KuC79ponzuJzr13BucDuRoIdm+U1nxX0=";
+    hash = "sha256-1MM04Z3C3gD2Bb+Emg8PoHmgsXq0n6RkhFdwNlCJSh4=";
   };
 
   sourceRoot = "${src.name}/python";
@@ -58,8 +57,7 @@ buildPythonPackage rec {
     hdf5-mpi
     nanobind
     ninja
-    # apple-sdk_12
-    # (darwinMinVersionHook "12.3")
+    spdlog
   ];
 
   propagatedBuildInputs = [

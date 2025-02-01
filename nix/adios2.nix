@@ -2,7 +2,7 @@
 stdenv
 , fetchFromGitHub
 , cmake
-, python3
+, python313
 , mpi
 , hdf5-mpi
 , perl
@@ -41,7 +41,7 @@ stdenv.mkDerivation rec {
     ];
 
     propagatedBuildInputs = [
-        python3
+        python313
     ];
 
     cmakeFlags = [

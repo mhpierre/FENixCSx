@@ -1,12 +1,12 @@
 final: prev: {
-  petsc = final.callPackage ./petsc.nix { };
+  # petsc = final.callPackage ./petsc.nix { };
   # TFEL/MFront
   tfel = final.callPackage ./tfel.nix { };
   adios2 = final.callPackage ./adios2.nix {
-    inherit (final.python312Packages) mpi4py;
+    inherit (final.python313Packages) mpi4py;
   };
   dolfinx-cpp = final.callPackage ./dolfinx-cpp.nix {
-    inherit (final.python312Packages)
+    inherit (final.python313Packages)
       basix
       ufl
       ffcx
@@ -17,7 +17,7 @@ final: prev: {
   slepc = final.callPackage ./slepc.nix { };
   # scotch = final.callPackage ./scotch.nix { };
 
-  python312 =
+  python313 =
     let
       packageOverrides = python-final: python-prev: {
         # Dolfinx-Materials
@@ -37,6 +37,6 @@ final: prev: {
         dolfinx-python = python-final.callPackage ./dolfinx-python.nix { };
       };
     in
-    prev.python312.override { inherit packageOverrides; };
+    prev.python313.override { inherit packageOverrides; };
 
 }
