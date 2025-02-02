@@ -1,29 +1,30 @@
-{ buildPythonPackage
-, fetchFromGitHub
-, ps
-, ninja
-, blas
-, setuptools
-, numpy
-, pybind11
-, scikit-build-core
-, cmake
-, pathspec
-, pyproject-metadata
-, ufl
-, nanobind
+{
+  buildPythonPackage,
+  fetchFromGitHub,
+  ps,
+  ninja,
+  blas,
+  setuptools,
+  numpy,
+  pybind11,
+  scikit-build-core,
+  cmake,
+  pathspec,
+  pyproject-metadata,
+  ufl,
+  nanobind,
 }:
 
-buildPythonPackage rec {
+buildPythonPackage {
 
   pname = "basix";
-  version = "v0.8.0";
+  version = "v0.9.0";
 
   src = fetchFromGitHub {
     owner = "FEniCS";
     repo = "basix";
-    rev = "v0.8.0";
-    hash = "sha256-SfpuPYgrh/FyK0dAgXcwcRHUSg7uy+AWFbtLubswfFo=";
+    rev = "v0.9.0";
+    hash = "sha256-jLQMDt6zdl+oixd5Qevn4bvxBsXpTNcbH2Os6TC9sRQ=";
   };
 
   format = "pyproject";

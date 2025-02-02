@@ -1,12 +1,13 @@
-{ buildPythonPackage
-, fetchPypi
-, mpi4py
-, numpy
-, pip
-, petsc
-, cython
-, mpi
-, clang
+{
+  buildPythonPackage,
+  fetchPypi,
+  mpi4py,
+  numpy,
+  pip,
+  petsc,
+  cython,
+  mpi,
+  clang,
 }:
 
 buildPythonPackage rec {
@@ -15,7 +16,7 @@ buildPythonPackage rec {
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "sha256-ViHd7mPQxjHS6P7S1dl2Oxg60WTCJ93o06vNtsNcX/s=";
+    sha256 = "sha256-HDZk1bUnNUFxB3yJxLH+899KQb5xltErynSydZx+Jkg=";
   };
 
   nativeBuildInputs = [

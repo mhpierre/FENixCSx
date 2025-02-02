@@ -7,13 +7,13 @@
 
 buildPythonPackage {
   pname = "ufl";
-  version = "2024.1.0";
+  version = "2024.2.0";
 
   src = fetchFromGitHub {
     owner = "FEniCS";
     repo = "ufl";
-    rev = "2024.1.0";
-    hash = "sha256-vXVgD6PVvMVvyocbRFQd7ca91MHwv32W+6TxDQm1y6M=";
+    rev = "2024.2.0";
+    hash = "sha256-YKLTXkN9cIKR545/JRN7zA7dNoVZEVIyO+JaL1V5ajU=";
   };
 
   format = "pyproject";
