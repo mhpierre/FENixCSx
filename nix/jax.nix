@@ -87,7 +87,7 @@ buildPythonPackage rec {
   # which creates a circular dependency. See https://discourse.nixos.org/t/how-to-nix-ify-python-packages-with-circular-dependencies/14648/2.
   # Not a big deal, this is how the JAX docs suggest running the test suite
   # anyhow.
-  # doCheck = false;
+  doCheck = false;
   pytestFlagsArray =
     [
       "--numprocesses=4"

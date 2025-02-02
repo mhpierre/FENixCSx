@@ -43,7 +43,7 @@ stdenv.mkDerivation {
     "-Denable-python=ON"
     "-Denable-python-bindings=ON"
     "-Denable-numpy-support=ON"
-    "-Denable-portable-build=ON"
+    # "-Denable-portable-build=ON"
   ];
 
   patches = [ ./tfel-fix703.patch ];
