@@ -6,25 +6,23 @@
   cmake,
   python313,
   tfel,
-  lib,
-  clang_17, # Cryptic CMAKE error 2 with clang 19
 }:
 
 stdenv.mkDerivation {
   pname = "mgis";
-  version = "2.2";
+  version = "3.0";
 
   src = fetchFromGitHub {
     owner = "thelfer";
     repo = "MFrontGenericInterfaceSupport";
-    rev = "MFrontGenericInterfaceSupport-2.2";
-    sha256 = "sha256-E0GjtCbApGt3vgfFMuNEoNmyyi84R2MH21P9jNU7MgI=";
+    rev = "MFrontGenericInterfaceSupport-3.0";
+    sha256 = "sha256-y8CwoSa3mZ9+kuZPLbQsq/0BJzBA6vhCbFnL3XsLT84=";
   };
 
   nativeBuildInputs = [
     cmake
     ps
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin clang_17;
+  ];
 
   propagatedBuildInputs = [
     python313
@@ -34,6 +32,14 @@ stdenv.mkDerivation {
   ];
 
   cmakeFlags = [
+    "-Wno-dev"
+    "-DCMAKE_BUILD_TYPE=Release"
+    "-Denable-c-bindings=OFF"
+    "-Denable-fortran-bindings=OFF"
     "-Denable-python-bindings=ON"
+    "-Denable-portable-build=ON"
+    "-Denable-julia-bindings=OFF"
+    "-Denable-website=OFF"
+    "-Denable-broken-boost-python-module-visibility-handling=ON"
   ];
 }

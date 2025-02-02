@@ -6,8 +6,7 @@
   cmake,
   python313,
   gnuplot,
-  lib,
-  clang_17, # Cryptic CMAKE error 2 with clang 19
+  gfortran,
 }:
 
 stdenv.mkDerivation {
@@ -18,23 +17,34 @@ stdenv.mkDerivation {
     owner = "thelfer";
     repo = "tfel";
     rev = "TFEL-5.0.0";
-    sha256 = "sha256-BTX6dldANIyc1f/fcDYWF1v0DKyq/J0wzP/h3luHfRU=";
+    sha256 = "sha256-D2fawDaKreBKULplx7wWQ1vWHRsbVCiSUPlaLmWz9VU=";
   };
 
   nativeBuildInputs = [
     cmake
+    gfortran
     ps
-  ] ++ lib.optional stdenv.hostPlatform.isDarwin clang_17;
+    pkgs.python313Packages.boost
+  ];
 
   propagatedBuildInputs = [
     python313
     pkgs.python313Packages.numpy
-    pkgs.python313Packages.boost
     gnuplot
   ];
 
   cmakeFlags = [
-    "-Denable-python-bindings=ON"
+    "-Wno-dev"
+    "-DCMAKE_BUILD_TYPE=Release"
     "-Dlocal-castem-header=ON"
+    "-Denable-fortran=ON"
+    "-Denable-aster=ON"
+    "-Denable-cyrano=ON"
+    "-Denable-python=ON"
+    "-Denable-python-bindings=ON"
+    "-Denable-numpy-support=ON"
+    "-Denable-portable-build=ON"
   ];
+
+  patches = [ ./tfel-fix703.patch ];
 }

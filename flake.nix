@@ -39,8 +39,8 @@
         local-packages = with pkgs; [
           # petsc
           slepc
-          # tfel
-          # mgis
+          tfel
+          mgis
           dolfinx-cpp
           # python313Packages.jax
           python313Packages.mpi4py
