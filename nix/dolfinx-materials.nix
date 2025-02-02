@@ -35,4 +35,8 @@ buildPythonPackage {
   ];
 
   dontUseCmakeConfigure = true;
+
+  pythonImportsCheck = [
+    "dolfinx_materials"
+  ];
 }

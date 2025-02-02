@@ -42,7 +42,7 @@
           tfel
           mgis
           dolfinx-cpp
-          # python313Packages.jax
+          python313Packages.jax
           python313Packages.mpi4py
           python313Packages.petsc4py
           python313Packages.slepc4py
@@ -50,7 +50,7 @@
           python313Packages.basix
           python313Packages.ffcx
           python313Packages.dolfinx-python
-          # python313Packages.dolfinx-materials
+          python313Packages.dolfinx-materials
         ];
       in
       {
