@@ -82,4 +82,8 @@ buildPythonPackage rec {
 
   dontUseCmakeConfigure = true;
 
+  pythonImportsCheck = [
+    "dolfinx"
+  ];
+
 }

@@ -1,4 +1,7 @@
 final: prev: {
+  mpi = prev.mpi.overrideAttrs (old: {
+    patches = [ ./mpi-ompi_rte.c.patch ];
+  });
   # petsc = final.callPackage ./petsc.nix { };
   # TFEL/MFront
   tfel = final.callPackage ./tfel.nix { };
