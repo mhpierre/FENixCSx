@@ -33,11 +33,8 @@
           numpy
           ninja
           mpi4py
-          # jax
-          # nanobind
         ];
         local-packages = with pkgs; [
-          # petsc
           slepc
           tfel
           mgis
