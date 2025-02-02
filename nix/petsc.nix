@@ -17,9 +17,9 @@
   parmetis,
   withParmetis ? true,
   scalapack,
-  withScalapack ? false,
+  withScalapack ? true,
   mumps,
-  withMumps ? false,
+  withMumps ? true,
   pkg-config,
   p4est,
   zlib, # propagated by p4est but required by petsc

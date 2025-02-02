@@ -2,7 +2,9 @@ final: prev: {
   mpi = prev.mpi.overrideAttrs (old: {
     patches = [ ./mpi-ompi_rte.c.patch ];
   });
-  # petsc = final.callPackage ./petsc.nix { };
+  petsc = final.callPackage ./petsc.nix { };
+  scalapack = final.callPackage ./scalapack.nix { };
+  mumps = final.callPackage ./mumps.nix { };
   # TFEL/MFront
   tfel = final.callPackage ./tfel.nix { };
   adios2 = final.callPackage ./adios2.nix {
