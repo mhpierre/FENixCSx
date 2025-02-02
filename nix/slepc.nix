@@ -6,7 +6,7 @@
   blas,
   lapack,
   mpi,
-  python313,
+  python3,
   gfortran,
   openssh,
   petsc,
@@ -30,7 +30,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [
-    python313
+    python3
     gfortran
     mpi
     openssh
