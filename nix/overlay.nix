@@ -2,15 +2,21 @@ final: prev: {
 
   # Patch mpi shmem error - see when a release > 5.0.6 is on nixpkgs
   mpi = prev.mpi.overrideAttrs (old: {
-    patches = [ ./mpi-ompi_rte.c.patch ];
+    patches = [
+      (prev.fetchpatch {
+        name = "fix-singletons-session-dir";
+        url = "https://github.com/open-mpi/ompi/commit/4d4f7212decd0d0ca719688b15dc9b3ee7553a52.patch";
+        hash = "sha256-Mb8qXtAUhAQ90v0SdL24BoTASsKRq2Gu8nYqoeSc9DI=";
+      })
+    ];
   });
 
-  # petsc = final.callPackage ./petsc.nix { };
-  petsc = prev.petsc.overrideAttrs (oldAttrs: {
-    withParmetis = true;
-    withScalapack = true;
-    withMumps = true;
-  });
+  petsc = final.callPackage ./petsc.nix { };
+  # petsc = prev.petsc.override {
+  #   withParmetis = true;
+  #   withScalapack = true;
+  #   withMumps = true;
+  # };
 
   slepc = final.callPackage ./slepc.nix { };
 
@@ -44,7 +50,10 @@ final: prev: {
         boost = python-prev.boost.override { enableNumpy = true; };
 
         # accessories for FEniCSx
-        mpi4py = python-final.callPackage ./mpi4py.nix { };
+        mpi4py = python-prev.mpi4py.overrideAttrs (old: {
+          patches = [ ./mpi4py.test.dlpackimpl.py.patch ];
+        });
+        # mpi4py = python-final.callPackage ./mpi4py.nix { };
         petsc4py = python-final.callPackage ./petsc4py.nix { };
         slepc4py = python-final.callPackage ./slepc4py.nix { };
         nanobind = python-final.callPackage ./nanobind.nix { };
